@@ -85,6 +85,10 @@ const prompt = () => inquirer.prompt(questions).then(response => {
         prompt();
     } else {
         console.log(team);
+        if (!fs.existsSync(OUTPUT_DIR)) {
+            fs.mkdirSync(OUTPUT_DIR);
+        }
+        fs.writeFile(outputPath,render(team),err => err ? console.log(err):console.log(`Generated ${outputPath}`));
     }
 });
 
