@@ -75,7 +75,6 @@ const questions = [
 
 // function to prompt user or render team
 const prompt = () => inquirer.prompt(questions).then(response => {
-    //console.log(response);
     if (response.type !== "***FINISHED ADDING***") {
         if (response.type === "Manager") {
             team.push(new Manager(response.name,response.id,response.email,response.office));
@@ -89,7 +88,6 @@ const prompt = () => inquirer.prompt(questions).then(response => {
         prompt();
     // render the team html and output to a file
     } else {
-        console.log(team);
         if (!fs.existsSync(OUTPUT_DIR)) {
             fs.mkdirSync(OUTPUT_DIR);
         }
